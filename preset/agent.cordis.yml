@@ -80,6 +80,16 @@
   config:
     sampleOverCapGlobResults: false
 
+# ── RL-shape editor（v0.2.0 接口还原）───────────────────────────────────────
+
+# RL 训练接口使用持久 shell + str_replace_editor（minimal preset 的双工具面）。
+# WEAK（Flash）带的首轮 core 工具集 = shell + 本编辑器（RL 形状），因为实测
+# （2026-08-15，官方 API，n=2）100% 工具调用 / 18-29K 推理字符，对比
+# read/write/edit 表面 ~25% 动作 / 73-101K。编辑器只在 weak 带会话首轮可见，
+# 首次持久 tool/call 后放开全目录。
+- id: tool-str-replace-editor
+  name: '@deepseek-ai/dsh-tool-str-replace-editor'
+
 # ── background jobs ────────────────────────────────────────────────────────
 
 # Only the model-facing controls. The task REGISTRY stays on the host plane:
