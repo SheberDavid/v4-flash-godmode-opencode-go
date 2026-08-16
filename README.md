@@ -89,6 +89,16 @@ cp -r preset ~/.dsh/.agent-presets/router-flash
 
 **修复方式**：把引导静态合并进 `WEAK_FLASH` persona，避免依赖任何动态注入机制。对固定任务同样有效，且更简单可靠。
 
+## RL 接口还原（v0.2.0 对齐）
+
+对齐 dsh-router-standard v0.2.0 的 RL 接口还原：weak（Flash）模式的首轮 core 工具集从 `read/write/edit` 改为 **`shell + str_replace_editor`**（RL 训练形状接口）。
+
+依据 dsh-router-standard v0.2.0 的实测（2026-08-15，官方 API，n=2）：RL 形状接口 100% 工具调用 / 18–29K 推理字符，对比 read/write/edit 表面约 25% 动作 / 73–101K。
+
+- `preset/agent.cordis.yml` 新增 `tool-str-replace-editor` 注册（`@deepseek-ai/dsh-tool-str-replace-editor`）。
+- `preset/router-core.mjs` 的 `coreFor('weak')` 返回 `['str_replace_editor']`；首次持久 tool/call 后仍放开全目录。
+- 该工具由 DSH 宿主提供（`@deepseek-ai/dsh-tool-str-replace-editor`），三平台通用，不依赖特定 shell。
+
 ## 适用范围
 
 - ✅ 本 preset 专为 **Flash** 设计：命中 `isFlashModel` 后一律走 weak 模式（作者实测 w7 最优解）。

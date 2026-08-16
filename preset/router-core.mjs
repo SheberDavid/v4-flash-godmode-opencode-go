@@ -70,11 +70,14 @@ export function personaFor(mode, modelId) {
   }
 }
 
-/** First-turn core tools (shell added dynamically by the plugin). */
+/** First-turn core tools (shell added dynamically by the plugin).
+ * weak 模式用 RL 训练形状接口：shell + str_replace_editor（v0.2.0 实测
+ * 100% 工具调用 / 18-29K 推理字符，对比 read/write/edit 表面 ~25% / 73-101K）。 */
 export function coreFor(mode) {
   switch (bandOf(mode)) {
     case 'spec': return ['read', 'edit', 'glob', 'grep']
     case 'transition': return ['read', 'edit', 'write', 'glob', 'grep']
+    case 'weak': return ['str_replace_editor'] // RL shape: shell + editor
     default: return ['read', 'write', 'edit']
   }
 }
