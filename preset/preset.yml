@@ -1,3 +1,3 @@
 name: Router Flash (opencode-go)
-description: Flash 专属路由——按任务类型（build/fix）内部路由，neutral persona + 分类引导 + 回顾锚 + 反跑题锚（作者 w7 方案，适配 opencode-go）
+description: 原作者已更新，本项目不再演进。请使用原作者 dsh-routing-suite：https://github.com/yjh051108/dsh-routing-suite
 order: 4
