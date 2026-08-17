@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ⚠️ 原作者已更新，本项目不再演进，请使用原作者项目：
+# ⚠️ 原作者已更新，本项目不再演进，建议使用原作者项目：
 #   https://github.com/yjh051108/dsh-routing-suite
 # 原作者预设按模型路由，理论上适用于 opencode-go + deepseek-v4-flash。
 # 本脚本仅供需要保留旧版行为的用户使用；新用户请直接安装原作者方案。
